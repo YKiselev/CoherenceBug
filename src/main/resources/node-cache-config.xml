@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<cache-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://xmlns.oracle.com/coherence/coherence-cache-config"
+              xsi:schemaLocation="http://xmlns.oracle.com/coherence/coherence-cache-config coherence-cache-config.xsd">
+
+    <caching-scheme-mapping>
+        <cache-mapping>
+            <cache-name>Items</cache-name>
+            <scheme-name>items</scheme-name>
+        </cache-mapping>
+    </caching-scheme-mapping>
+
+    <caching-schemes>
+
+        <near-scheme>
+            <scheme-name>items</scheme-name>
+            <front-scheme>
+                <local-scheme>
+                    <scheme-name>LocalMemoryScheme</scheme-name>
+                    <expiry-delay>15m</expiry-delay>
+                </local-scheme>
+            </front-scheme>
+            <back-scheme>
+                <distributed-scheme>
+                    <scheme-ref>distributed-items</scheme-ref>
+                </distributed-scheme>
+            </back-scheme>
+        </near-scheme>
+
+        <distributed-scheme>
+            <scheme-name>distributed-items</scheme-name>
+            <service-name>DistributedCache</service-name>
+            <serializer>java</serializer>
+            <backing-map-scheme>
+                <local-scheme>
+                    <high-units>1000000</high-units>
+                    <expiry-delay>30m</expiry-delay>
+                </local-scheme>
+            </backing-map-scheme>
+            <autostart>true</autostart>
+        </distributed-scheme>
+
+        <proxy-scheme>
+            <service-name>ExtendTcpProxyService</service-name>
+            <thread-count>5</thread-count>
+            <acceptor-config>
+                <tcp-acceptor>
+                    <local-address>
+                        <address>localhost</address>
+                        <port>33100</port>
+                    </local-address>
+                </tcp-acceptor>
+            </acceptor-config>
+            <autostart>true</autostart>
+        </proxy-scheme>
+
+    </caching-schemes>
+
+</cache-config>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE cache-config SYSTEM "cache-config.dtd">
+<cache-config>
+
+    <caching-scheme-mapping>
+        <cache-mapping>
+            <cache-name>Items</cache-name>
+            <scheme-name>items</scheme-name>
+        </cache-mapping>
+    </caching-scheme-mapping>
+
+    <caching-schemes>
+
+        <remote-cache-scheme>
+            <scheme-name>items</scheme-name>
+            <service-name>ExtendTcpCacheService</service-name>
+            <initiator-config>
+                <tcp-initiator>
+                    <remote-addresses>
+                        <socket-address>
+                            <address>localhost</address>
+                            <port>33100</port>
+                        </socket-address>
+                    </remote-addresses>
+                    <connect-timeout>10s</connect-timeout>
+                </tcp-initiator>
+                <outgoing-message-handler>
+                    <request-timeout>5s</request-timeout>
+                </outgoing-message-handler>
+            </initiator-config>
+        </remote-cache-scheme>
+
+        <remote-invocation-scheme>
+            <scheme-name>extend-invocation</scheme-name>
+            <service-name>ExtendTcpInvocationService</service-name>
+            <initiator-config>
+                <tcp-initiator>
+                    <remote-addresses>
+                        <socket-address>
+                            <address>localhost</address>
+                            <port>33100</port>
+                        </socket-address>
+                    </remote-addresses>
+                    <connect-timeout>10s</connect-timeout>
+                </tcp-initiator>
+                <outgoing-message-handler>
+                    <request-timeout>5s</request-timeout>
+                </outgoing-message-handler>
+            </initiator-config>
+        </remote-invocation-scheme>
+
+    </caching-schemes>
+</cache-config>
