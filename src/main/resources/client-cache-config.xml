@@ -22,10 +22,10 @@
                             <port>33100</port>
                         </socket-address>
                     </remote-addresses>
-                    <connect-timeout>10s</connect-timeout>
+                    <connect-timeout>600s</connect-timeout>
                 </tcp-initiator>
                 <outgoing-message-handler>
-                    <request-timeout>5s</request-timeout>
+                    <request-timeout>600s</request-timeout>
                 </outgoing-message-handler>
             </initiator-config>
         </remote-cache-scheme>
@@ -41,10 +41,10 @@
                             <port>33100</port>
                         </socket-address>
                     </remote-addresses>
-                    <connect-timeout>10s</connect-timeout>
+                    <connect-timeout>600s</connect-timeout>
                 </tcp-initiator>
                 <outgoing-message-handler>
-                    <request-timeout>5s</request-timeout>
+                    <request-timeout>600s</request-timeout>
                 </outgoing-message-handler>
             </initiator-config>
         </remote-invocation-scheme>

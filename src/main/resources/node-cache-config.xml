@@ -12,37 +12,22 @@
 
     <caching-schemes>
 
-        <near-scheme>
-            <scheme-name>items</scheme-name>
-            <front-scheme>
-                <local-scheme>
-                    <scheme-name>LocalMemoryScheme</scheme-name>
-                    <expiry-delay>15m</expiry-delay>
-                </local-scheme>
-            </front-scheme>
-            <back-scheme>
-                <distributed-scheme>
-                    <scheme-ref>distributed-items</scheme-ref>
-                </distributed-scheme>
-            </back-scheme>
-        </near-scheme>
-
         <distributed-scheme>
-            <scheme-name>distributed-items</scheme-name>
+            <scheme-name>items</scheme-name>
             <service-name>DistributedCache</service-name>
             <serializer>java</serializer>
+            <!--<thread-count>10</thread-count>-->
             <backing-map-scheme>
-                <local-scheme>
-                    <high-units>1000000</high-units>
-                    <expiry-delay>30m</expiry-delay>
-                </local-scheme>
+                <local-scheme/>
             </backing-map-scheme>
             <autostart>true</autostart>
         </distributed-scheme>
 
         <proxy-scheme>
             <service-name>ExtendTcpProxyService</service-name>
-            <thread-count>5</thread-count>
+            <!--<thread-count>5</thread-count>-->
+            <thread-count-max>75</thread-count-max>
+            <thread-count-min>10</thread-count-min>
             <acceptor-config>
                 <tcp-acceptor>
                     <local-address>

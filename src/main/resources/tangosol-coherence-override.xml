@@ -5,8 +5,8 @@
     <cluster-config>
 
         <member-identity>
-            <cluster-name system-property="tangosol.coherence.cluster">MyCoherenceCluster</cluster-name>
-            <role-name>CoherenceAppNode</role-name>
+            <cluster-name system-property="tangosol.coherence.cluster">cache-bug-poc</cluster-name>
+            <role-name>node</role-name>
         </member-identity>
 
         <unicast-listener>
@@ -20,13 +20,6 @@
             <port system-property="tangosol.coherence.localport">23000</port>
             <port-auto-adjust>true</port-auto-adjust>
         </unicast-listener>
-
-        <multicast-listener>
-            <address></address>
-            <port></port>
-            <time-to-live system-property="tangosol.coherence.ttl"></time-to-live>
-            <join-timeout-milliseconds></join-timeout-milliseconds>
-        </multicast-listener>
 
         <!--<multicast-listener>-->
             <!--<address>231.1.1.1</address>-->
@@ -46,19 +39,5 @@
         <severity-level system-property="tangosol.coherence.log.level">9</severity-level>
         <character-limit system-property="tangosol.coherence.log.limit">0</character-limit>
     </logging-config>
-
-    <!--<configurable-cache-factory-config>-->
-        <!--<class-name system-property="tangosol.coherence.cachefactory">com.tangosol.coherence.spring.SpringAwareCacheFactory</class-name>-->
-        <!--<init-params>-->
-            <!--<init-param>-->
-                <!--<param-type>java.lang.String</param-type>-->
-                <!--<param-value system-property="tangosol.coherence.cacheconfig">coherence-cache-config.xml</param-value>-->
-            <!--</init-param>-->
-            <!--<init-param id="1">-->
-                <!--<param-type>java.lang.String</param-type>-->
-                <!--<param-value system-property="tangosol.coherence.springconfig">/spring/coherence-app-context.xml</param-value>-->
-            <!--</init-param>-->
-        <!--</init-params>-->
-    <!--</configurable-cache-factory-config>-->
 
 </coherence>
